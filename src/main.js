@@ -18,6 +18,8 @@ function handleSearch(event) {
 
   const query = event.currentTarget.elements['search-text'].value.trim();
 
+  clearGallery();
+
   if (!query) {
     iziToast.error({
       message: 'Please enter a search query.',
@@ -27,7 +29,6 @@ function handleSearch(event) {
     return;
   }
 
-  clearGallery();
   showLoader();
 
   getImagesByQuery(query)
