@@ -16,12 +16,12 @@ form.addEventListener('submit', handleSearch);
 function handleSearch(event) {
   event.preventDefault();
 
-  const query = event.currentTarget.elements['search-text'].value.trim();
+  const input = event.currentTarget.elements['search-text'];
+  const query = input.value.trim();
 
-    clearGallery();
-    showLoader();
- 
-  if (!query) {
+  clearGallery();
+
+  if (query === '') {
     iziToast.error({
       message: 'Please enter a search query.',
       position: 'topRight',
@@ -30,6 +30,7 @@ function handleSearch(event) {
     return;
   }
 
+  showLoader();
 
   getImagesByQuery(query)
     .then(data => {
