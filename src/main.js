@@ -19,7 +19,6 @@ function handleSearch(event) {
   const input = event.currentTarget.elements['search-text'];
   const query = input.value.trim();
 
-  clearGallery();
 
   if (query === '') {
     iziToast.error({
@@ -30,6 +29,7 @@ function handleSearch(event) {
     return;
   }
 
+  clearGallery();
   showLoader();
 
   getImagesByQuery(query)
